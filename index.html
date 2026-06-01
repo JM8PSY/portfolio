@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Junpei Tsujimoto Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
+        <div class="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
+            <a href="#" class="text-xl font-bold tracking-tight">JT.dev</a>
+            <nav class="flex space-x-6 text-sm font-medium">
+                <a href="#about" class="hover:text-blue-600 transition">About</a>
+                <a href="#skills" class="hover:text-blue-600 transition">Skills</a>
+                <a href="#projects" class="hover:text-blue-600 transition">Projects</a>
+                <a href="#contact" class="hover:text-blue-600 transition">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 py-12 space-y-24">
+
+        <section id="about" class="pt-8 flex flex-col md:flex-row items-center gap-12">
+            <div class="flex-1 space-y-6">
+                <div class="inline-flex items-center space-x-2 bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm font-medium">
+                    <span>システム制御情報工学 専攻</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900">
+                    辻本 純平
+                </h1>
+                <p class="text-lg text-slate-600 leading-relaxed">
+                    ハードウェアの設計開発から，サーバーインフラの構築・運用，そして実社会の課題を解決するためのシステム開発まで幅広く取り組んでいます．技術コンテストへの挑戦や組織マネジメントの経験を活かし，複雑な課題に対して多角的なアプローチを試みることが得意です．
+                </p>
+                <div class="flex space-x-4">
+                    <a href="#projects" class="bg-slate-900 hover:bg-slate-800 text-white px-5 py-2.5 rounded-lg text-sm font-medium transition shadow-sm">
+                        実績を見る
+                    </a>
+                    <a href="#contact" class="bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 px-5 py-2.5 rounded-lg text-sm font-medium transition shadow-sm">
+                        連絡を取る
+                    </a>
+                </div>
+            </div>
+            <div class="w-48 h-48 md:w-64 md:h-64 bg-slate-200 rounded-2xl flex items-center justify-center border border-slate-300 shadow-inner">
+                <i data-lucide="user" class="w-16 h-16 text-slate-400"></i>
+            </div>
+        </section>
+
+        <section id="skills" class="space-y-8 scroll-mt-20">
+            <div class="border-l-4 border-blue-600 pl-4">
+                <h2 class="text-2xl font-bold text-slate-900">Skills</h2>
+                <p class="text-sm text-slate-500 mt-1">これまでの開発・運用経験がある技術要素です．</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-4">
+                    <div class="flex items-center space-x-3 text-blue-600">
+                        <i data-lucide="cpu" class="w-6 h-6"></i>
+                        <h3 class="font-bold text-slate-900">Hardware & Embedded</h3>
+                    </div>
+                    <p class="text-sm text-slate-600">ESP32やArduinoを用いた組み込みシステムの開発，回路設計，各種センサーの制御，無線通信（アンテナ設計など）の基礎知見を有しています．</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-4">
+                    <div class="flex items-center space-x-3 text-blue-600">
+                        <i data-lucide="server" class="w-6 h-6"></i>
+                        <h3 class="font-bold text-slate-900">Infrastructure & Server</h3>
+                    </div>
+                    <p class="text-sm text-slate-600">Proxmoxを用いた仮想化環境の構築，ベアメタルサーバーの運用，Linux環境における各種ミドルウェアのセットアップおよびネットワーク管理が可能です．</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-4">
+                    <div class="flex items-center space-x-3 text-blue-600">
+                        <i data-lucide="code-2" class="w-6 h-6"></i>
+                        <h3 class="font-bold text-slate-900">Software & DX</h3>
+                    </div>
+                    <p class="text-sm text-slate-600">PythonやC/C++を用いたシステム実装，IoTデバイスと連携するアプリケーションのプロトタイピング，実務効率化のためのスクリプト作成などを行います．</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="space-y-8 scroll-mt-20">
+            <div class="border-l-4 border-blue-600 pl-4">
+                <h2 class="text-2xl font-bold text-slate-900">Projects</h2>
+                <p class="text-sm text-slate-500 mt-1">これまでに主導・参画した主なプロジェクトや制作物です．</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden flex flex-col">
+                    <div class="h-48 bg-slate-100 flex items-center justify-center border-b border-slate-200">
+                        <i data-lucide="beaker" class="w-12 h-12 text-slate-400"></i>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <span class="text-xs font-semibold text-blue-600 uppercase tracking-wider">農業DX / センサーネットワーク</span>
+                            <h3 class="text-xl font-bold text-slate-900 mt-1">D-Farmer</h3>
+                            <p class="text-sm text-slate-600 mt-2 leading-relaxed">
+                                ドローンに搭載した赤外線カメラ等のデータからトマトの品質（糖度・酸度）を推定するシステムの開発，および野生鳥獣による被害を防ぐための監視ネットワーク構築プロジェクトです．各種コンテストへの出展・評価を経験しています．
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="bg-slate-100 text-slate-700 px-2 py-1 rounded text-xs">Python</span>
+                            <span class="bg-slate-100 text-slate-700 px-2 py-1 rounded text-xs">IoT</span>
+                            <span class="bg-slate-100 text-slate-700 px-2 py-1 rounded text-xs">データ解析</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden flex flex-col">
+                    <div class="h-48 bg-slate-100 flex items-center justify-center border-b border-slate-200">
+                        <i data-lucide="map-pin" class="w-12 h-12 text-slate-400"></i>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <span class="text-xs font-semibold text-blue-600 uppercase tracking-wider">屋内測位 / アプリケーション</span>
+                            <h3 class="text-xl font-bold text-slate-900 mt-1">Meiwannne</h3>
+                            <p class="text-sm text-slate-600 mt-2 leading-relaxed">
+                                GPSの届かない屋内施設において，BLE（Bluetooth Low Energy）ビーコンを用いた高精度な位置測定と，それに基づくルート案内を提供するナビゲーションアプリケーションの開発プロジェクトです．
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="bg-slate-100 text-slate-700 px-2 py-1 rounded text-xs">BLE Beacon</span>
+                            <span class="bg-slate-100 text-slate-700 px-2 py-1 rounded text-xs">位置測位アルゴリズム</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden flex flex-col">
+                    <div class="h-48 bg-slate-100 flex items-center justify-center border-b border-slate-200">
+                        <i data-lucide="calendar" class="w-12 h-12 text-slate-400"></i>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <span class="text-xs font-semibold text-blue-600 uppercase tracking-wider">学内インフラ / 自動化</span>
+                            <h3 class="text-xl font-bold text-slate-900 mt-1">寮管理当番運用システム</h3>
+                            <p class="text-sm text-slate-600 mt-2 leading-relaxed">
+                                学生寮における清掃当番や運用の割り当てを自動化・最適化するためのタスク管理システムです．手動運用のコストを削減し，ミスなくローテーションを回すロジックを実装し運用しています．
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="bg-slate-100 text-slate-700 px-2 py-1 rounded text-xs">Linux</span>
+                            <span class="bg-slate-100 text-slate-700 px-2 py-1 rounded text-xs">自動化スクリプト</span>
+                            <span class="bg-slate-100 text-slate-700 px-2 py-1 rounded text-xs">運用管理</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden flex flex-col">
+                    <div class="h-48 bg-slate-100 flex items-center justify-center border-b border-slate-200">
+                        <i data-lucide="users" class="w-12 h-12 text-slate-400"></i>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <span class="text-xs font-semibold text-blue-600 uppercase tracking-wider">マネジメント / 組織運営</span>
+                            <h3 class="text-xl font-bold text-slate-900 mt-1">学生会活動・組織マネジメント</h3>
+                            <p class="text-sm text-slate-600 mt-2 leading-relaxed">
+                                学生会会長などの役割を通じ，各種イベントの企画立案，予算交渉，学内組織間の利害調整を主導しました．技術面だけでなく，合意形成やプロジェクト全体の推進力を磨く経験となりました．
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="bg-slate-100 text-slate-700 px-2 py-1 rounded text-xs">プロジェクト管理</span>
+                            <span class="bg-slate-100 text-slate-700 px-2 py-1 rounded text-xs">組織運営</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="space-y-8 scroll-mt-20 max-w-xl mx-auto text-center">
+            <div class="space-y-2">
+                <h2 class="text-2xl font-bold text-slate-900">Contact</h2>
+                <p class="text-sm text-slate-500">ご質問，お仕事や共同開発のご相談などがあればご連絡ください．</p>
+            </div>
+            <div class="bg-white p-8 rounded-xl border border-slate-200 shadow-sm space-y-6">
+                <p class="text-slate-600">
+                    現在はメール，またはGitHubリポジトリ経由でのご連絡を受け付けています．
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-4 text-sm font-medium">
+                    <a href="mailto:your-email@example.com" class="flex items-center space-x-2 text-blue-600 hover:underline">
+                        <i data-lucide="mail" class="w-4 h-4"></i>
+                        <span>your-email@example.com</span>
+                    </a>
+                    <span class="hidden sm:inline text-slate-300">|</span>
+                    <a href="https://github.com/your-username" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 text-slate-700 hover:underline">
+                        <i data-lucide="github" class="w-4 h-4"></i>
+                        <span>GitHub Profile</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-900 text-slate-400 py-8 text-center text-xs border-t border-slate-800">
+        <p>&copy; 2026 Junpei Tsujimoto. All rights reserved.</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
