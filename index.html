@@ -11,11 +11,13 @@
 
     <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
         <div class="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
-            <a href="#" class="text-xl font-bold tracking-tight">JT.dev</a>
+            <a href="#" class="text-xl font-bold tracking-tight">JM8PSY.DEV</a>
             <nav class="flex space-x-6 text-sm font-medium">
                 <a href="#about" class="hover:text-blue-600 transition">About</a>
                 <a href="#skills" class="hover:text-blue-600 transition">Skills</a>
                 <a href="#projects" class="hover:text-blue-600 transition">Projects</a>
+                <a href="#awards" class="hover:text-blue-600 transition">Awards</a>
+                <a href="#certifications" class="hover:text-blue-600 transition">Certifications</a>
                 <a href="#contact" class="hover:text-blue-600 transition">Contact</a>
             </nav>
         </div>
@@ -43,8 +45,8 @@
                     </a>
                 </div>
             </div>
-            <div class="w-48 h-48 md:w-64 md:h-64 bg-slate-200 rounded-2xl flex items-center justify-center border border-slate-300 shadow-inner">
-                <i data-lucide="user" class="w-16 h-16 text-slate-400"></i>
+            <div class="w-48 h-48 md:w-64 md:h-64 bg-slate-200 rounded-2xl overflow-hidden border border-slate-300 shadow-inner">
+                <img src="assets/profile.jpg" alt="プロフィール画像" class="w-full h-full object-cover">
             </div>
         </section>
 
@@ -84,22 +86,23 @@
                 <p class="text-sm text-slate-500 mt-1">これまでに主導・参画した主なプロジェクトや制作物です．</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
                 <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden flex flex-col">
                     <div class="h-48 bg-slate-100 flex items-center justify-center border-b border-slate-200">
-                        <i data-lucide="beaker" class="w-12 h-12 text-slate-400"></i>
+                        <i data-lucide="sprout" class="w-12 h-12 text-slate-400"></i>
                     </div>
                     <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
                         <div>
                             <span class="text-xs font-semibold text-blue-600 uppercase tracking-wider">農業DX / センサーネットワーク</span>
-                            <h3 class="text-xl font-bold text-slate-900 mt-1">D-Farmer</h3>
+                            <h3 class="text-xl font-bold text-slate-900 mt-1">でぃー農X / D-Farmer</h3>
                             <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                                ドローンに搭載した赤外線カメラ等のデータからトマトの品質（糖度・酸度）を推定するシステムの開発，および野生鳥獣による被害を防ぐための監視ネットワーク構築プロジェクトです．各種コンテストへの出展・評価を経験しています．
+                                農家の後継者不足やアナログな作業環境といった課題を解決する統合型農業DXソリューションです．主にトマトを対象とし，カメラ画像からYOLOやMobileNetV2を用いて糖度・酸度・大きさを推定するAIモデルを構築しました．さらに，GNSSに依存しないBLEビーコンを用いた屋内位置情報取得技術を組み合わせ，スマートフォンやXRゴーグル上で作業員へリアルタイムに生育状況を提示するシステムを開発しています．
                             </p>
                         </div>
                         <div class="flex flex-wrap gap-2 pt-2">
                             <span class="bg-slate-100 text-slate-700 px-2 py-1 rounded text-xs">Python</span>
-                            <span class="bg-slate-100 text-slate-700 px-2 py-1 rounded text-xs">IoT</span>
-                            <span class="bg-slate-100 text-slate-700 px-2 py-1 rounded text-xs">データ解析</span>
+                            <span class="bg-slate-100 text-slate-700 px-2 py-1 rounded text-xs">AI (MobileNetV2/YOLO)</span>
+                            <span class="bg-slate-100 text-slate-700 px-2 py-1 rounded text-xs">BLE Beacon</span>
                         </div>
                     </div>
                 </div>
@@ -110,35 +113,36 @@
                     </div>
                     <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
                         <div>
-                            <span class="text-xs font-semibold text-blue-600 uppercase tracking-wider">屋内測位 / アプリケーション</span>
-                            <h3 class="text-xl font-bold text-slate-900 mt-1">Meiwannne</h3>
+                            <span class="text-xs font-semibold text-blue-600 uppercase tracking-wider">屋内測位 / XRアプリケーション</span>
+                            <h3 class="text-xl font-bold text-slate-900 mt-1">迷わなたす</h3>
                             <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                                GPSの届かない屋内施設において，BLE（Bluetooth Low Energy）ビーコンを用いた高精度な位置測定と，それに基づくルート案内を提供するナビゲーションアプリケーションの開発プロジェクトです．
+                                複雑化する屋内施設での迷子問題と，施設管理のDX化を同時に解決する屋内位置情報取得システムです．BLEビーコンの受信電力を用いた三点測位方式（フリスの伝達公式を応用）により高精度な自己位置推定を実現しました．私はXR/サーバーエンジニアとして，施設情報を一元管理するAPIサーバーの構築と，HoloLens2を用いて空間上に清掃履歴や設備情報を重畳表示するシステムの実装を担当しました．
                             </p>
                         </div>
                         <div class="flex flex-wrap gap-2 pt-2">
-                            <span class="bg-slate-100 text-slate-700 px-2 py-1 rounded text-xs">BLE Beacon</span>
-                            <span class="bg-slate-100 text-slate-700 px-2 py-1 rounded text-xs">位置測位アルゴリズム</span>
+                            <span class="bg-slate-100 text-slate-700 px-2 py-1 rounded text-xs">HoloLens2</span>
+                            <span class="bg-slate-100 text-slate-700 px-2 py-1 rounded text-xs">三点測位アルゴリズム</span>
+                            <span class="bg-slate-100 text-slate-700 px-2 py-1 rounded text-xs">REST API</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden flex flex-col">
                     <div class="h-48 bg-slate-100 flex items-center justify-center border-b border-slate-200">
-                        <i data-lucide="calendar" class="w-12 h-12 text-slate-400"></i>
+                        <i data-lucide="book-open" class="w-12 h-12 text-slate-400"></i>
                     </div>
                     <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
                         <div>
-                            <span class="text-xs font-semibold text-blue-600 uppercase tracking-wider">学内インフラ / 自動化</span>
-                            <h3 class="text-xl font-bold text-slate-900 mt-1">寮管理当番運用システム</h3>
+                            <span class="text-xs font-semibold text-blue-600 uppercase tracking-wider">生成AI / Webアプリケーション</span>
+                            <h3 class="text-xl font-bold text-slate-900 mt-1">AI選書サービス「ぴっく君」</h3>
                             <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                                学生寮における清掃当番や運用の割り当てを自動化・最適化するためのタスク管理システムです．手動運用のコストを削減し，ミスなくローテーションを回すロジックを実装し運用しています．
+                                若者の活字離れに対し，「音楽」を切り口として本と出会う体験を提供するAI選書サービスです．あらすじだけでなく「読み味（クオリア）」で本と人をマッチングさせるため，大規模言語モデル（Qwen）に独自の教師データをFine-Tuningさせました．ユーザーが入力した楽曲のテーマや情景描写を分析し，親和性の高い書籍を提案するバックエンド（FastAPI）とローカルGPU環境の構築を担当しました．
                             </p>
                         </div>
                         <div class="flex flex-wrap gap-2 pt-2">
-                            <span class="bg-slate-100 text-slate-700 px-2 py-1 rounded text-xs">Linux</span>
-                            <span class="bg-slate-100 text-slate-700 px-2 py-1 rounded text-xs">自動化スクリプト</span>
-                            <span class="bg-slate-100 text-slate-700 px-2 py-1 rounded text-xs">運用管理</span>
+                            <span class="bg-slate-100 text-slate-700 px-2 py-1 rounded text-xs">LLM (Qwen)</span>
+                            <span class="bg-slate-100 text-slate-700 px-2 py-1 rounded text-xs">Fine-Tuning</span>
+                            <span class="bg-slate-100 text-slate-700 px-2 py-1 rounded text-xs">FastAPI</span>
                         </div>
                     </div>
                 </div>
@@ -150,9 +154,9 @@
                     <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
                         <div>
                             <span class="text-xs font-semibold text-blue-600 uppercase tracking-wider">マネジメント / 組織運営</span>
-                            <h3 class="text-xl font-bold text-slate-900 mt-1">学生会活動・組織マネジメント</h3>
+                            <h3 class="text-xl font-bold text-slate-900 mt-1">学生会活動</h3>
                             <p class="text-sm text-slate-600 mt-2 leading-relaxed">
-                                学生会会長などの役割を通じ，各種イベントの企画立案，予算交渉，学内組織間の利害調整を主導しました．技術面だけでなく，合意形成やプロジェクト全体の推進力を磨く経験となりました．
+                                学生会では，学生会副会長，学生会会長を歴任しております．技術面だけでなく，合意形成やプロジェクト全体の推進力を磨く経験となりました．
                             </p>
                         </div>
                         <div class="flex flex-wrap gap-2 pt-2">
@@ -161,6 +165,234 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- 受賞歴・発表歴セクション -->
+        <section id="awards" class="space-y-8 scroll-mt-20">
+            <div class="border-l-4 border-blue-600 pl-4">
+                <h2 class="text-2xl font-bold text-slate-900">Awards & Presentations</h2>
+                <p class="text-sm text-slate-500 mt-1">これまでのコンテスト参加・受賞歴です．</p>
+            </div>
+            
+            <div class="bg-white p-6 md:p-8 rounded-xl border border-slate-200 shadow-sm space-y-10">
+                <div class="space-y-5">
+                    <h3 class="text-lg font-bold text-slate-900 border-b border-slate-200 pb-2 flex items-center gap-2">
+                        <i data-lucide="calendar" class="w-5 h-5 text-blue-600"></i> 2026年
+                    </h3>
+                    <ul class="space-y-4 text-slate-700">
+                        <li class="flex items-start">
+                            <i data-lucide="award" class="w-5 h-5 text-yellow-500 mr-4 shrink-0 mt-0.5"></i>
+                            <div>
+                                <p class="font-bold text-slate-900">STEAM JAPAN AWARD 2026</p>
+                                <p class="text-sm text-slate-600">2026/03 | BRONZE賞</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="award" class="w-5 h-5 text-yellow-500 mr-4 shrink-0 mt-0.5"></i>
+                            <div>
+                                <p class="font-bold text-slate-900">高専ワイヤレステックコンテスト2025（WiCON2025）</p>
+                                <p class="text-sm text-slate-600">2026/03 | リコー賞</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="award" class="w-5 h-5 text-yellow-500 mr-4 shrink-0 mt-0.5"></i>
+                            <div>
+                                <p class="font-bold text-slate-900">第12回 Japan Business Design & Action Award 2025-2026</p>
+                                <p class="text-sm text-slate-600">2026/03 | ビジネスアスリート賞</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="award" class="w-5 h-5 text-yellow-500 mr-4 shrink-0 mt-0.5"></i>
+                            <div>
+                                <p class="font-bold text-slate-900">第6回インフラマネジメントテクノロジーコンテスト2025</p>
+                                <p class="text-sm text-slate-600">2026/03 | 審査委員特別賞，JR東日本・今後の展開に期待で賞</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="award" class="w-5 h-5 text-yellow-500 mr-4 shrink-0 mt-0.5"></i>
+                            <div>
+                                <p class="font-bold text-slate-900">第12回 Japan Business Design & Action Award 2025-2026 in Web</p>
+                                <p class="text-sm text-slate-600">2026/03 | アイデアプラン・グランプリ（Japan大会へ出場）</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="award" class="w-5 h-5 text-yellow-500 mr-4 shrink-0 mt-0.5"></i>
+                            <div>
+                                <p class="font-bold text-slate-900">第12回 Japan Business Design & Action Award 2025-2026 in 北海道</p>
+                                <p class="text-sm text-slate-600">2026/02 | アイデアプラン・準グランプリ</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="award" class="w-5 h-5 text-yellow-500 mr-4 shrink-0 mt-0.5"></i>
+                            <div>
+                                <p class="font-bold text-slate-900">技育CAMP2025 Vol.19</p>
+                                <p class="text-sm text-slate-600">2026/02 | サポーターズ賞</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="flag" class="w-5 h-5 text-slate-400 mr-4 shrink-0 mt-0.5"></i>
+                            <div>
+                                <p class="font-bold text-slate-900">DCON2026</p>
+                                <p class="text-sm text-slate-600">2026/01 | 二次審査敗退</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="space-y-5">
+                    <h3 class="text-lg font-bold text-slate-900 border-b border-slate-200 pb-2 flex items-center gap-2">
+                        <i data-lucide="calendar" class="w-5 h-5 text-blue-600"></i> 2025年
+                    </h3>
+                    <ul class="space-y-4 text-slate-700">
+                        <li class="flex items-start">
+                            <i data-lucide="flag" class="w-5 h-5 text-slate-400 mr-4 shrink-0 mt-0.5"></i>
+                            <div>
+                                <p class="font-bold text-slate-900">第10回廃炉創造ロボコン</p>
+                                <p class="text-sm text-slate-600">2025/12 | 受賞無し</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="award" class="w-5 h-5 text-yellow-500 mr-4 shrink-0 mt-0.5"></i>
+                            <div>
+                                <p class="font-bold text-slate-900">技育博 2025 Vol.5</p>
+                                <p class="text-sm text-slate-600">2025/12 | サポーターズ賞</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="award" class="w-5 h-5 text-yellow-500 mr-4 shrink-0 mt-0.5"></i>
+                            <div>
+                                <p class="font-bold text-slate-900">2025年度Matching HUB Business Idea & Plan competition（M-BIP）</p>
+                                <p class="text-sm text-slate-600">2025/11 | 辻本チーム：NEDO賞，卒業生の荒木兄チーム：アイ・オー・データ賞，北陸電力グループ賞</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="award" class="w-5 h-5 text-yellow-500 mr-4 shrink-0 mt-0.5"></i>
+                            <div>
+                                <p class="font-bold text-slate-900">一般財団法人 東熱科学技術奨学財団 2025年理工系高校生によるプロジェクト</p>
+                                <p class="text-sm text-slate-600">2025/10 | 奨励賞</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="award" class="w-5 h-5 text-yellow-500 mr-4 shrink-0 mt-0.5"></i>
+                            <div>
+                                <p class="font-bold text-slate-900">XROBOCON 初日〜SHONICHI〜</p>
+                                <p class="text-sm text-slate-600">2025/08 | 準優勝</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="award" class="w-5 h-5 text-yellow-500 mr-4 shrink-0 mt-0.5"></i>
+                            <div>
+                                <p class="font-bold text-slate-900">第7回中高生情報学研究コンテスト全国大会</p>
+                                <p class="text-sm text-slate-600">2025/03 | 中高生研究賞奨励賞</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="award" class="w-5 h-5 text-yellow-500 mr-4 shrink-0 mt-0.5"></i>
+                            <div>
+                                <p class="font-bold text-slate-900">Japanビジネスデザイン＆アクションアワード2024-2025</p>
+                                <p class="text-sm text-slate-600">2025/03 | 未来ビジネス賞</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="award" class="w-5 h-5 text-yellow-500 mr-4 shrink-0 mt-0.5"></i>
+                            <div>
+                                <p class="font-bold text-slate-900">高専ワイヤレステックコンテスト2024（WiCON2024）</p>
+                                <p class="text-sm text-slate-600">2025/03 | リコー賞</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="award" class="w-5 h-5 text-yellow-500 mr-4 shrink-0 mt-0.5"></i>
+                            <div>
+                                <p class="font-bold text-slate-900">第5回インフラマネジメントテクノロジーコンテスト2024</p>
+                                <p class="text-sm text-slate-600">2025/03 | 地域賞</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="award" class="w-5 h-5 text-yellow-500 mr-4 shrink-0 mt-0.5"></i>
+                            <div>
+                                <p class="font-bold text-slate-900">第2回高専起業家サミット</p>
+                                <p class="text-sm text-slate-600">2025/02 | 本選出場</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="award" class="w-5 h-5 text-yellow-500 mr-4 shrink-0 mt-0.5"></i>
+                            <div>
+                                <p class="font-bold text-slate-900">Japanビジネスデザイン＆アクションアワード2024-2025 北海道大会</p>
+                                <p class="text-sm text-slate-600">2025/02 | グランプリ</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="flag" class="w-5 h-5 text-slate-400 mr-4 shrink-0 mt-0.5"></i>
+                            <div>
+                                <p class="font-bold text-slate-900">DCON2025</p>
+                                <p class="text-sm text-slate-600">2025/01 | 二次審査敗退</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="award" class="w-5 h-5 text-yellow-500 mr-4 shrink-0 mt-0.5"></i>
+                            <div>
+                                <p class="font-bold text-slate-900">高専ビジネスコンテストin鈴鹿</p>
+                                <p class="text-sm text-slate-600">2025/01 | 高専プロッセル賞，オーディエンス賞</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="space-y-5">
+                    <h3 class="text-lg font-bold text-slate-900 border-b border-slate-200 pb-2 flex items-center gap-2">
+                        <i data-lucide="calendar" class="w-5 h-5 text-blue-600"></i> 2024年
+                    </h3>
+                    <ul class="space-y-4 text-slate-700">
+                        <li class="flex items-start">
+                            <i data-lucide="award" class="w-5 h-5 text-yellow-500 mr-4 shrink-0 mt-0.5"></i>
+                            <div>
+                                <p class="font-bold text-slate-900">高専キャリア起業部ピッチ in 高専キャリア2024 冬の全国大会</p>
+                                <p class="text-sm text-slate-600">2024/12 | 準優勝，BTO賞</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="award" class="w-5 h-5 text-yellow-500 mr-4 shrink-0 mt-0.5"></i>
+                            <div>
+                                <p class="font-bold text-slate-900">2024年度 Matching HUB Business Idea & Plan competition(M-BIP)</p>
+                                <p class="text-sm text-slate-600">2024/11 | システムサポート賞，オーディエンス賞</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 保有資格セクション -->
+        <section id="certifications" class="space-y-8 scroll-mt-20">
+            <div class="border-l-4 border-blue-600 pl-4">
+                <h2 class="text-2xl font-bold text-slate-900">Certifications</h2>
+                <p class="text-sm text-slate-500 mt-1">取得済みの資格一覧です．</p>
+            </div>
+            <div class="bg-white p-6 md:p-8 rounded-xl border border-slate-200 shadow-sm">
+                <ul class="space-y-4 text-slate-700">
+                    <li class="flex items-start">
+                        <i data-lucide="badge-check" class="w-5 h-5 text-blue-500 mr-4 shrink-0 mt-0.5"></i>
+                        <div>
+                            <p class="font-bold text-slate-900">第2級アマチュア無線技士</p>
+                            <p class="text-sm text-slate-600">コールサイン：JM8PSY，JF6CXA</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <i data-lucide="badge-check" class="w-5 h-5 text-blue-500 mr-4 shrink-0 mt-0.5"></i>
+                        <div>
+                            <p class="font-bold text-slate-900">普通自動車第一種運転免許</p>
+                            <p class="text-sm text-slate-600">2026年4月 取得</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <i data-lucide="badge-check" class="w-5 h-5 text-blue-500 mr-4 shrink-0 mt-0.5"></i>
+                        <div>
+                            <p class="font-bold text-slate-900">2級陸上特殊無線技士</p>
+                            <p class="text-sm text-slate-600">2026年3月 取得</p>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </section>
 
