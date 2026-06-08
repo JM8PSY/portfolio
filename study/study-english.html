@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>科学技術英語I 単語学習アプリ</title>
+    <style>
+        body { font-family: 'Helvetica Neue', Arial, sans-serif; background-color: #f4f7f6; color: #333; text-align: center; padding: 20px; }
+        h1 { color: #2c3e50; font-size: 24px; }
+        .file-upload-container { background: #ecf0f1; padding: 15px; border-radius: 8px; display: inline-block; margin-bottom: 20px; border: 1px dashed #bdc3c7; }
+        select { padding: 8px; font-size: 16px; border-radius: 5px; border: 1px solid #ccc; width: 100%; max-width: 300px; cursor: pointer; }
+        .controls { margin-bottom: 20px; }
+        button { padding: 10px 15px; margin: 5px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; transition: 0.2s; }
+        .btn-mode { background-color: #3498db; color: white; }
+        .btn-mode:hover { background-color: #2980b9; }
+        .card { background: white; width: 90%; max-width: 400px; margin: 0 auto; padding: 30px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); min-height: 200px; display: flex; flex-direction: column; justify-content: center; cursor: pointer; }
+        .word { font-size: 28px; font-weight: bold; color: #e74c3c; margin-bottom: 10px; }
+        .pos { font-size: 14px; color: #7f8c8d; margin-bottom: 10px; }
+        .meaning, .definition { display: none; margin-top: 15px; }
+        .meaning { font-size: 20px; font-weight: bold; color: #2c3e50; }
+        .definition { font-size: 14px; color: #555; text-align: left; background: #ecf0f1; padding: 10px; border-radius: 5px; margin-top: 15px; }
+        .action-btns { margin-top: 20px; display: none; }
+        .btn-correct { background-color: #2ecc71; color: white; }
+        .btn-wrong { background-color: #e67e22; color: white; }
+        .status { margin-top: 15px; font-size: 14px; color: #7f8c8d; }
+    </style>
+</head>
+<body>
+
+    <h1>科学技術英語I 単語学習</h1>
+    
+    <div class="file-upload-container">
+        <label for="data-select" style="font-weight: bold; display: block; margin-bottom: 10px;">📂 学習する範囲を選択</label>
+        <select id="data-select" onchange="loadSelectedData()">
+            <option value="">-- リストから選んでください --</option>
+            <option value="unit1">Unit 1 のみ (Artificial Light on the Sea)</option>
+            <option value="unit2">Unit 2 のみ (Tuning Out Mom’s Voice?)</option>
+            <option value="all">Unit 1 & 2 総合テスト</option>
+        </select>
+    </div>
+    
+    <div class="controls">
+        <button class="btn-mode" onclick="startApp('all')">全ての単語を学習</button>
+        <button class="btn-mode" onclick="startApp('weak')">弱点克服（間違えた単語）</button>
+    </div>
+
+    <div id="flashcard" class="card" onclick="flipCard()">
+        <p id="card-unit" class="pos"></p>
+        <div id="card-word" class="word">範囲を選択してください</div>
+        <div id="card-pos" class="pos"></div>
+        <div id="card-meaning" class="meaning"></div>
+        <div id="card-def" class="definition"></div>
+    </div>
+
+    <div id="actions" class="action-btns">
+        <button class="btn-correct" onclick="markAnswer(true)">分かった (O)</button>
+        <button class="btn-wrong" onclick="markAnswer(false)">分からなかった (X)</button>
+    </div>
+
+    <div class="status">
+        進捗: <span id="progress">0 / 0</span> | 弱点リスト登録数: <span id="weak-count">0</span>
+    </div>
+
+    <script>
+        // ▼ 単語データをHTML内に直接定義 ▼
+        const wordData = {
+            unit1: [
+                {"id": "u1_1", "unit": 1, "word": "publish", "pos": "[v]", "japanese": "出版する", "definition": "to make information available to the public, typically in printed or electronic form"},
+                {"id": "u1_2", "unit": 1, "word": "pollution", "pos": "[n]", "japanese": "公害・汚染", "definition": "the action or process of making land, water, air, etc., dirty and not safe or suitable to use"},
+                {"id": "u1_3", "unit": 1, "word": "risk", "pos": "[v]", "japanese": "～する恐れがある", "definition": "to put (something) in a situation in which it could be lost, damaged, etc."},
+                {"id": "u1_4", "unit": 1, "word": "confuse", "pos": "[v]", "japanese": "混乱させる", "definition": "to make (someone) uncertain or unable to understand something"},
+                {"id": "u1_5", "unit": 1, "word": "disrupt", "pos": "[v]", "japanese": "妨害する", "definition": "to cause (something) to be unable to continue in the normal way"},
+                {"id": "u1_6", "unit": 1, "word": "behavior", "pos": "[n]", "japanese": "行動・行為", "definition": "the way in which one acts or conducts oneself, especially toward others"},
+                {"id": "u1_7", "unit": 1, "word": "stretch", "pos": "[v]", "japanese": "伸びる・広がる", "definition": "to extend or spread over an area or period of time"},
+                {"id": "u1_8", "unit": 1, "word": "structure", "pos": "[n]", "japanese": "構造", "definition": "something (such as a house, tower, bridge, etc.) that is built by putting parts together and that usually stands on its own"},
+                {"id": "u1_9", "unit": 1, "word": "penetrate", "pos": "[v]", "japanese": "届く・浸透する", "definition": "to go through or into something"},
+                {"id": "u1_10", "unit": 1, "word": "artificial", "pos": "[adj]", "japanese": "人工の", "definition": "made or produced by human beings rather than occurring naturally"},
+                {"id": "u1_11", "unit": 1, "word": "affect", "pos": "[v]", "japanese": "影響を与える", "definition": "to have an effect on someone or something"},
+                {"id": "u1_12", "unit": 1, "word": "prevent", "pos": "[v]", "japanese": "妨げる", "definition": "to stop something from happening"},
+                {"id": "u1_13", "unit": 1, "word": "pollination", "pos": "[n]", "japanese": "受粉", "definition": "the process of pollen entering or being put into a flower or plant so that it produces seeds"},
+                {"id": "u1_14", "unit": 1, "word": "bright", "pos": "[adj]", "japanese": "明るい", "definition": "emitting or reflecting a lot of light"},
+                {"id": "u1_15", "unit": 1, "word": "assess", "pos": "[v]", "japanese": "評価する", "definition": "to evaluate or estimate the nature, ability, or quality of something"},
+                {"id": "u1_16", "unit": 1, "word": "interact", "pos": "[v]", "japanese": "関わり合う", "definition": "to come together and have an effect on each other"},
+                {"id": "u1_17", "unit": 1, "word": "colleague", "pos": "[n]", "japanese": "同僚", "definition": "a person who works with you, especially in a profession or business"},
+                {"id": "u1_18", "unit": 1, "word": "atmosphere", "pos": "[n]", "japanese": "大気", "definition": "the whole mass of air that surrounds the Earth"},
+                {"id": "u1_19", "unit": 1, "word": "measurement", "pos": "[n]", "japanese": "計測", "definition": "the act or the process of finding the size, quantity or degree of something"},
+                {"id": "u1_20", "unit": 1, "word": "satellite", "pos": "[n]", "japanese": "人工衛星", "definition": "a machine that is sent into space and that moves around the earth, moon, sun, or a planet"},
+                {"id": "u1_21", "unit": 1, "word": "estimate", "pos": "[v]", "japanese": "推定する", "definition": "to roughly calculate or judge the value, number, quantity, or extent of something"},
+                {"id": "u1_22", "unit": 1, "word": "vary", "pos": "[v]", "japanese": "変化する・異なる", "definition": "to be different in size, amount, degree, or nature"},
+                {"id": "u1_23", "unit": 1, "word": "simulate", "pos": "[v]", "japanese": "シミュレーションをする", "definition": "to create particular conditions that exist in real life using computers, models, etc."},
+                {"id": "u1_24", "unit": 1, "word": "wavelength", "pos": "[n]", "japanese": "波長", "definition": "the distance between two similar points on a wave of energy, such as light or sound"},
+                {"id": "u1_25", "unit": 1, "word": "species", "pos": "[n]", "japanese": "種（しゅ）", "definition": "a group of animals or plants that are similar and can produce young animals or plants"},
+                {"id": "u1_26", "unit": 1, "word": "sensitive", "pos": "[adj]", "japanese": "敏感な", "definition": "easily affected or damaged"},
+                {"id": "u1_27", "unit": 1, "word": "focus", "pos": "[v]", "japanese": "焦点を当てる", "definition": "to concentrate one's attention or effort"},
+                {"id": "u1_28", "unit": 1, "word": "seek", "pos": "[v]", "japanese": "探す、求める", "definition": "to try to find or obtain"},
+                {"id": "u1_29", "unit": 1, "word": "surface", "pos": "[n]", "japanese": "表面、海面", "definition": "the outside part or uppermost layer of something"},
+                {"id": "u1_30", "unit": 1, "word": "intense", "pos": "[adj]", "japanese": "強烈な", "definition": "very great in degree; very strong"}
+            ],
+            unit2: [
+                {"id": "u2_1", "unit": 2, "word": "ignore", "pos": "[v]", "japanese": "無視する", "definition": "to pay no attention to something or someone"},
+                {"id": "u2_2", "unit": 2, "word": "fairly", "pos": "[adv]", "japanese": "かなり", "definition": "to a moderate or acceptable extent; moderately"},
+                {"id": "u2_3", "unit": 2, "word": "common", "pos": "[a]", "japanese": "共通の、ありふれた", "definition": "happening often; occurring frequently; not rare"},
+                {"id": "u2_4", "unit": 2, "word": "tune out", "pos": "[p.v.]", "japanese": "～を無視する", "definition": "to stop paying attention to someone or something"},
+                {"id": "u2_5", "unit": 2, "word": "findings", "pos": "[n]", "japanese": "発見", "definition": "the results or conclusions reached through research, investigation, or study"},
+                {"id": "u2_6", "unit": 2, "word": "scan", "pos": "[v]", "japanese": "（CTで）スキャンする", "definition": "to examine something closely or quickly, often to find specific information"},
+                {"id": "u2_7", "unit": 2, "word": "unfamiliar", "pos": "[a]", "japanese": "馴染のない、見知らぬ", "definition": "not known or recognized; not frequently seen, heard, or experienced"},
+                {"id": "u2_8", "unit": 2, "word": "nonsense", "pos": "[n]", "japanese": "無意味な言葉", "definition": "words or language that has no meaning"},
+                {"id": "u2_9", "unit": 2, "word": "allow", "pos": "[v]", "japanese": "～することを可能にする", "definition": "to make it possible for someone or something to have or do something"},
+                {"id": "u2_10", "unit": 2, "word": "region", "pos": "[n]", "japanese": "領域、地域", "definition": "a particular area or place that is different or separate from other parts in some way"},
+                {"id": "u2_11", "unit": 2, "word": "detect", "pos": "[v]", "japanese": "検出する、感知する", "definition": "to discover or notice something, especially something that is not easily seen, heard, or known about"},
+                {"id": "u2_12", "unit": 2, "word": "reward", "pos": "[n]", "japanese": "報酬", "definition": "something given or received in return for good behavior, effort, or achievement"},
+                {"id": "u2_13", "unit": 2, "word": "colleague", "pos": "[n]", "japanese": "同僚", "definition": "a person who works with others in the same organization or profession"},
+                {"id": "u2_14", "unit": 2, "word": "respond", "pos": "[v]", "japanese": "反応する", "definition": "to react to something that has been said or done"},
+                {"id": "u2_15", "unit": 2, "word": "midst", "pos": "[n]", "japanese": "最中、中間", "definition": "the middle or central part of something"},
+                {"id": "u2_16", "unit": 2, "word": "puberty", "pos": "[n]", "japanese": "思春期", "definition": "the stage in life when a person's body starts to develop sexually; the period of adolescence"},
+                {"id": "u2_17", "unit": 2, "word": "decade", "pos": "[n]", "japanese": "10年", "definition": "a period of ten years"},
+                {"id": "u2_18", "unit": 2, "word": "transition", "pos": "[n]", "japanese": "移行、変化", "definition": "the process or period of changing from one state or condition to another"},
+                {"id": "u2_19", "unit": 2, "word": "worthy", "pos": "[a]", "japanese": "～の価値がある", "definition": "having enough good qualities to be considered important, useful, etc."},
+                {"id": "u2_20", "unit": 2, "word": "expand", "pos": "[v]", "japanese": "拡大する", "definition": "to become larger in size, volume, scope, or importance"},
+                {"id": "u2_21", "unit": 2, "word": "reflection", "pos": "[n]", "japanese": "反映", "definition": "something that shows the effect, existence, or character of something else"},
+                {"id": "u2_22", "unit": 2, "word": "stress out", "pos": "[p.v.]", "japanese": "（ストレスで）疲れる", "definition": "to make someone feel very anxious, tense, or worried"},
+                {"id": "u2_23", "unit": 2, "word": "text", "pos": "[n]", "japanese": "テキストメッセージ", "definition": "a short message that is sent electronically to a cell phone or other device"},
+                {"id": "u2_24", "unit": 2, "word": "adapt", "pos": "[v]", "japanese": "適応する", "definition": "to change in order to fit new circumstances or conditions; to adjust"},
+                {"id": "u2_25", "unit": 2, "word": "mature", "pos": "[v]", "japanese": "成熟する、成長する", "definition": "to become fully developed in the body and mind"},
+                {"id": "u2_26", "unit": 2, "word": "survival", "pos": "[n]", "japanese": "生存、生き残ること", "definition": "the state or fact of continuing to live or exist, typically in spite of difficult conditions"},
+                {"id": "u2_27", "unit": 2, "word": "maternal", "pos": "[a]", "japanese": "母親の", "definition": "relating to or characteristic of a mother or motherhood"},
+                {"id": "u2_28", "unit": 2, "word": "carry out", "pos": "[p.v.]", "japanese": "成し遂げる、実施する", "definition": "to complete or perform something, such as a task or duty"},
+                {"id": "u2_29", "unit": 2, "word": "peer", "pos": "[n]", "japanese": "仲間", "definition": "a person who is equal to another in social status, abilities, age, background, or other qualities"},
+                {"id": "u2_30", "unit": 2, "word": "frustrated", "pos": "[a]", "japanese": "イライラした", "definition": "very angry, discouraged, or upset because of being unable to do or complete something"}
+            ]
+        };
+
+        // グローバル変数
+        let allWords = [];
+        let currentQueue = [];
+        let currentIndex = 0;
+        let isFlipped = false;
+        let currentListKey = "";
+
+        // ▼ Cookie操作のユーティリティ ▼
+        function setCookie(name, value, days) {
+            let expires = "";
+            if (days) {
+                let date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+        }
+
+        function getCookie(name) {
+            let nameEQ = name + "=";
+            let ca = document.cookie.split(';');
+            for(let i=0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
+        // 選択されたリストごとに弱点データを分けるためのCookie名
+        function getWeakCookieName() {
+            return 'weak_words_' + currentListKey;
+        }
+
+        function getWeakWords() {
+            if (!currentListKey) return [];
+            let cookie = getCookie(getWeakCookieName());
+            return cookie ? JSON.parse(decodeURIComponent(cookie)) : [];
+        }
+
+        function saveWeakWord(id) {
+            let weak = getWeakWords();
+            if (!weak.includes(id)) {
+                weak.push(id);
+                setCookie(getWeakCookieName(), encodeURIComponent(JSON.stringify(weak)), 30);
+            }
+            updateWeakCount();
+        }
+
+        function removeWeakWord(id) {
+            let weak = getWeakWords();
+            weak = weak.filter(wordId => wordId !== id);
+            setCookie(getWeakCookieName(), encodeURIComponent(JSON.stringify(weak)), 30);
+            updateWeakCount();
+        }
+
+        function updateWeakCount() {
+            if (!currentListKey) {
+                document.getElementById('weak-count').innerText = "0";
+                return;
+            }
+            document.getElementById('weak-count').innerText = getWeakWords().length;
+        }
+
+        // ▼ ドロップダウンでのデータ切り替え ▼
+        function loadSelectedData() {
+            const selected = document.getElementById('data-select').value;
+            currentListKey = selected;
+
+            if (!selected) {
+                allWords = [];
+                document.getElementById('card-word').innerText = "範囲を選択してください";
+                document.getElementById('card-unit').innerText = "";
+                document.getElementById('card-pos').innerText = "";
+                document.getElementById('card-meaning').style.display = "none";
+                document.getElementById('card-def').style.display = "none";
+                document.getElementById('actions').style.display = "none";
+                updateWeakCount();
+                return;
+            }
+
+            // 選択に応じてデータを結合・セット
+            if (selected === 'unit1') {
+                allWords = [...wordData.unit1];
+            } else if (selected === 'unit2') {
+                allWords = [...wordData.unit2];
+            } else if (selected === 'all') {
+                allWords = [...wordData.unit1, ...wordData.unit2];
+            }
+
+            updateWeakCount();
+            startApp('all'); // 選択後、自動で全単語学習をスタート
+        }
+
+        // ▼ 学習フロー制御 ▼
+        function startApp(mode) {
+            if (allWords.length === 0) {
+                alert("まずは上部のメニューから学習範囲を選択してください！");
+                return;
+            }
+
+            if (mode === 'all') {
+                currentQueue = [...allWords].sort(() => Math.random() - 0.5);
+            } else if (mode === 'weak') {
+                let weakIds = getWeakWords();
+                currentQueue = allWords.filter(word => weakIds.includes(word.id)).sort(() => Math.random() - 0.5);
+                if (currentQueue.length === 0) {
+                    alert('現在、この範囲で弱点リストに登録されている単語はありません！素晴らしいです！');
+                    return;
+                }
+            }
+            currentIndex = 0;
+            showCard();
+        }
+
+        function showCard() {
+            if (currentIndex >= currentQueue.length) {
+                document.getElementById('card-unit').innerText = "";
+                document.getElementById('card-word').innerText = "完了！";
+                document.getElementById('card-pos').innerText = "この範囲の単語をすべて復習しました。";
+                document.getElementById('card-meaning').style.display = "none";
+                document.getElementById('card-def').style.display = "none";
+                document.getElementById('actions').style.display = "none";
+                document.getElementById('progress').innerText = `${currentQueue.length} / ${currentQueue.length}`;
+                return;
+            }
+
+            let word = currentQueue[currentIndex];
+            isFlipped = false;
+            document.getElementById('card-unit').innerText = word.unit ? `Unit ${word.unit}` : "";
+            document.getElementById('card-word').innerText = word.word;
+            document.getElementById('card-pos').innerText = word.pos || "";
+            document.getElementById('card-meaning').innerText = word.japanese;
+            document.getElementById('card-def').innerText = word.definition || "";
+            
+            document.getElementById('card-meaning').style.display = "none";
+            document.getElementById('card-def').style.display = "none";
+            document.getElementById('actions').style.display = "none";
+
+            document.getElementById('progress').innerText = `${currentIndex + 1} / ${currentQueue.length}`;
+        }
+
+        function flipCard() {
+            if (currentIndex >= currentQueue.length || allWords.length === 0) return;
+            if (!isFlipped) {
+                document.getElementById('card-meaning').style.display = "block";
+                document.getElementById('card-def').style.display = "block";
+                document.getElementById('actions').style.display = "block";
+                isFlipped = true;
+            }
+        }
+
+        function markAnswer(isCorrect) {
+            let word = currentQueue[currentIndex];
+            event.stopPropagation(); // カードクリックの重複判定を防ぐ
+            
+            if (isCorrect) {
+                removeWeakWord(word.id);
+            } else {
+                saveWeakWord(word.id);
+            }
+            
+            currentIndex++;
+            showCard();
+        }
+    </script>
+</body>
+</html>
